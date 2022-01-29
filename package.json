@@ -1,0 +1,26 @@
+{
+    "name": "project",
+    "version": "1.0.0",
+    "main": "truffle-config.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "test": "truffle test",
+        "ganache": "ganache-cli -m \"correct piano problem scatter property join club dolphin turn focus random creek\"",
+        "compile": "truffle compile",
+        "start": "cd client;npm run start"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "@openzeppelin/test-helpers": "^0.5.15",
+        "@truffle/hdwallet-provider": "^2.0.1",
+        "web3": "^1.7.0"
+    },
+    "dependencies": {
+        "solc": "^0.4.26"
+    }
+}
