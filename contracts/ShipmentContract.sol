@@ -30,7 +30,7 @@ contract ShipmentContract{
 
     //============ VARIABLES
     address private admin;
-    uint[] private shipmentIds;
+    uint[] public shipmentIds;
     address[] public userIds;
     mapping(uint => Shipment) public shipments;
     mapping(address => User) public users;
@@ -143,7 +143,7 @@ contract ShipmentContract{
         onlyLogistics
     {
         require(users[_seller].isVerified && users[_buyer].isVerified,"Shipment users not found or not yet verified");
-        uint _id = shipmentIds.length;
+        uint _id = shipmentIds.length + 100;
         shipmentIds.push(_id);
         Shipment memory shipment = 
             Shipment(
