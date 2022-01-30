@@ -50,10 +50,12 @@ export const setUser = async (address, role) => {
             ?.setUser(role)
             .send({ from: address, gas: 96000, gasPrice: 20000000000 })
             .then((res) => {
-                console.log("reciept --->", res);
+                return true;
+            })
+            .catch((err) => {
+                return false;
             });
 
-        console.log(data);
         return data;
     } catch (e) {
         console.log("err in set user -->", e);
