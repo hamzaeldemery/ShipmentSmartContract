@@ -3,12 +3,17 @@ import { Row } from "react-bootstrap";
 import { Card } from "../Card";
 import { ShowShipment } from "../ShowShipment";
 import { PayShipment } from "./PayShipment";
+import { ConfirmDelivery } from "./ConfirmDelivery";
 
 export const Buyer = () => {
     const funcs = {
         pay: {
             title: "Pay Shipment",
             comp: <PayShipment />,
+        },
+        confirm: {
+            title: "Confirm Delivery",
+            comp: <ConfirmDelivery />,
         },
         showShipment: {
             title: "Show Shipment",

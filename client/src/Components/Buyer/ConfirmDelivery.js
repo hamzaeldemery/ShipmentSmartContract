@@ -13,6 +13,9 @@ export const ConfirmDelivery = () => {
         );
         if (res != false) {
             setShipmentID(true);
+            setTimeout(() => {
+                setShipmentID(false);
+            }, 3000);
         }
         console.log("res in buyer approve ---> ", res);
     };
@@ -33,7 +36,7 @@ export const ConfirmDelivery = () => {
                 </Form>
             ) : (
                 <div>
-                    <h1>Paid!</h1>
+                    <h1>Confirmed!</h1>
                 </div>
             )}
         </div>
