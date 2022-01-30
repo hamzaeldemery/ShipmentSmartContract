@@ -53,6 +53,7 @@ export const ShowShipment = () => {
                                 <th style={{ width: "9rem" }}>Buyer</th>
                                 <th style={{ width: "9rem" }}>Owner</th>
                                 <th>Price</th>
+                                <th>Paid</th>
                                 <th>Custom Exit Approval</th>
                                 <th>Custom Entry Approval</th>
                             </tr>
@@ -112,8 +113,9 @@ export const ShowShipment = () => {
                                     </div>
                                 </td>
                                 <td>{data.price}</td>
+                                <td>{data.paid ? "Yes" : "No"}</td>
                                 <td>{data.customExit ? "Yes" : "No"}</td>
-                                <td>{data.customEntry ? "Yes" : "No"}</td>
+                                <td>{data.customEnter ? "Yes" : "No"}</td>
                             </tr>
                         </tbody>
                     </Table>
