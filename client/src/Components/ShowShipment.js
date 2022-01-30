@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Table } from "react-bootstrap";
-import { getShipment, getCookie } from "../../helpers";
+import { getShipment, getCookie } from "../helpers";
 
 export const ShowShipment = () => {
     const [data, setData] = useState(false);

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Row } from "react-bootstrap";
 import { Card } from "../Card";
 import { CreateShipment } from "./CreateShipment";
-import { ShowShipment } from "./ShowShipment";
+import { ShowShipment } from "../ShowShipment";
 import { TransferOwnership } from "./TransferOwnership";
 import { StartShipment } from "./StartShipment";
 import { ConfirmShipment } from "./ConfirmShipment";
