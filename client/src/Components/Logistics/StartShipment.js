@@ -33,7 +33,7 @@ export const StartShipment = () => {
                 </Form>
             ) : (
                 <div>
-                    <h1>Confirmed!</h1>
+                    <h1>Started!</h1>
                 </div>
             )}
         </div>
