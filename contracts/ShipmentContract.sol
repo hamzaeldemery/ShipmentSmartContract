@@ -46,6 +46,7 @@ contract ShipmentContract{
     event CreateShipment(uint id, uint price, address seller, address buyer);
     event TransferOwnership(uint id, uint price, address seller, address buyer, address ownerId);
     event CustomExitApproval(uint id, bool customApproved);
+    event CustomEntryApproval(uint id, bool customApproved);
     event ShipmentPaid(uint id, uint price);
     event StartShipping(uint id, address ownerId, STATUS status);
 
@@ -200,6 +201,7 @@ contract ShipmentContract{
 
     function customEntryApproval(uint shipmentId) external onlyCustom{
         shipments[shipmentId].customEnter = true;
+        emit CustomEntryApproval(shipmentId, shipments[shipmentId].customEnter);
     }
 
     function startShipping(uint _shipment_id)
