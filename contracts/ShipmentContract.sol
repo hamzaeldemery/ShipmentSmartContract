@@ -87,7 +87,7 @@ contract ShipmentContract{
         _;
     }
     modifier VerifyShipmentId(uint _id){
-        require(shipmentIds.length >= _id + 1, "No such ID");
+        require(shipmentIds.length + 100 >= _id + 1, "No such ID");
         _;
     }
     modifier customApprovedExit(uint _shipmentId){
