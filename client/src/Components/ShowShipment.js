@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Form, Button, Table } from "react-bootstrap";
 import { getShipment, getCookie } from "../helpers";
 
+const STATUS = ["PENDING", "SHIPPING", "SHIPPED", "DELIVERED"];
+
 export const ShowShipment = () => {
     const [data, setData] = useState(false);
     const handleOnSubmit = async (e) => {
@@ -52,6 +54,7 @@ export const ShowShipment = () => {
                                 <th style={{ width: "9rem" }}>Seller</th>
                                 <th style={{ width: "9rem" }}>Buyer</th>
                                 <th style={{ width: "9rem" }}>Owner</th>
+                                <th>Status</th>
                                 <th>Price</th>
                                 <th>Paid</th>
                                 <th>Custom Exit Approval</th>
@@ -112,6 +115,7 @@ export const ShowShipment = () => {
                                         {copyButton(data.ownerId)}
                                     </div>
                                 </td>
+                                <td>{STATUS[data.status]}</td>
                                 <td>{data.price}</td>
                                 <td>{data.paid ? "Yes" : "No"}</td>
                                 <td>{data.customExit ? "Yes" : "No"}</td>
