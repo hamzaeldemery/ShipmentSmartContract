@@ -1,16 +1,14 @@
 import Web3 from "web3";
 import ShipmentContract from "./Contracts/Shipment.json";
+const providerURL = "http://localhost:8545";
 
 const getWeb3 = async () =>
     new Promise((resolve, reject) => {
         // Wait for loading completion to avoid race conditions with web3 injection timing.
         window.addEventListener("load", async () => {
             // Fallback to localhost; use dev console port by default...
-            const provider = new Web3.providers.HttpProvider(
-                "http://127.0.0.1:8545"
-            );
+            const provider = new Web3.providers.HttpProvider(providerURL);
             const web3 = new Web3(provider);
-            console.log("No web3 instance injected, using Local web3.");
             resolve(web3);
         });
     }).catch((e) => {
@@ -35,7 +33,7 @@ export const getCookie = (name) => {
 };
 
 export const setUser = async (address, role) => {
-    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const provider = new Web3.providers.HttpProvider(providerURL);
     const web3 = new Web3(provider);
 
     try {
@@ -62,7 +60,7 @@ export const setUser = async (address, role) => {
 };
 
 export const verifyUser = async (address, userAddress) => {
-    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const provider = new Web3.providers.HttpProvider(providerURL);
     const web3 = new Web3(provider);
 
     try {
@@ -90,7 +88,7 @@ export const verifyUser = async (address, userAddress) => {
 };
 
 export const createShipment = async (address, seller, buyer, price) => {
-    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const provider = new Web3.providers.HttpProvider(providerURL);
     const web3 = new Web3(provider);
 
     try {
@@ -123,7 +121,7 @@ export const transferOwnership = async (
     new_owner,
     ownerType
 ) => {
-    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const provider = new Web3.providers.HttpProvider(providerURL);
     const web3 = new Web3(provider);
 
     try {
@@ -152,7 +150,7 @@ export const transferOwnership = async (
 };
 
 export const getShipment = async (address, shipmentId) => {
-    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const provider = new Web3.providers.HttpProvider(providerURL);
     const web3 = new Web3(provider);
 
     try {
@@ -181,7 +179,7 @@ export const getShipment = async (address, shipmentId) => {
 };
 //todo
 export const confirmShipment = async (address, shipmentId) => {
-    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const provider = new Web3.providers.HttpProvider(providerURL);
     const web3 = new Web3(provider);
 
     try {
@@ -212,7 +210,7 @@ export const confirmShipment = async (address, shipmentId) => {
 };
 //todo
 export const startShipment = async (address, shipmentId) => {
-    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const provider = new Web3.providers.HttpProvider(providerURL);
     const web3 = new Web3(provider);
 
     try {
@@ -243,7 +241,7 @@ export const startShipment = async (address, shipmentId) => {
 };
 
 export const exitApproval = async (address, shipmentId) => {
-    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const provider = new Web3.providers.HttpProvider(providerURL);
     const web3 = new Web3(provider);
 
     try {
@@ -274,7 +272,7 @@ export const exitApproval = async (address, shipmentId) => {
 };
 
 export const entryApproval = async (address, shipmentId) => {
-    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const provider = new Web3.providers.HttpProvider(providerURL);
     const web3 = new Web3(provider);
 
     try {
@@ -305,7 +303,7 @@ export const entryApproval = async (address, shipmentId) => {
 };
 
 export const payShipment = async (address, shipmentId) => {
-    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const provider = new Web3.providers.HttpProvider(providerURL);
     const web3 = new Web3(provider);
 
     try {
@@ -344,7 +342,7 @@ export const payShipment = async (address, shipmentId) => {
 };
 
 export const confirmDelivery = async (address, shipmentId) => {
-    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const provider = new Web3.providers.HttpProvider(providerURL);
     const web3 = new Web3(provider);
 
     try {
