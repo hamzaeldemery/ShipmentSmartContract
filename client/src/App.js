@@ -25,10 +25,7 @@ const App = () => {
             const acc = await web3.eth.getAccounts();
             setAccounts(acc);
             if (!localStorage.getItem("contractAddress")?.length) {
-                localStorage.setItem(
-                    "0x89c3fACC5AC5d2d2A6F946fa4bAe5c6D92Ee2909",
-                    "admin&ADMIN"
-                );
+                localStorage.setItem(acc[1], "admin&ADMIN");
                 const inst = new web3.eth.Contract(ShipmentContract.abi);
                 const tx = inst.deploy({ data: ShipmentContract.bytecode });
                 console.log("inst --->", tx);
@@ -39,8 +36,7 @@ const App = () => {
                             data: tx.encodeABI(),
                             gas: "6721973",
                         },
-                        process?.env?.PRIVATE_KEY ||
-                            "0x21a5dbcc8e90087c392f2a4362c04d6eb40f1676d8ffb2da18d8cd60c678af3c"
+                        "0x21a5dbcc8e90087c392f2a4362c04d6eb40f1676d8ffb2da18d8cd60c678af3c"
                     );
                 const createReceipt = await web3.eth.sendSignedTransaction(
                     createTransaction.rawTransaction
