@@ -99,12 +99,12 @@ contract("ShipmentContract", (accounts) => {
             }
         );
         expectEvent(shipment.receipt, "CreateShipment", {
-            id: new BN(0),
+            id: new BN(100),
             price: new BN(1),
             seller: this.defaultUsers.seller.address,
             buyer: this.defaultUsers.buyer.address,
         });
-        const shipmentResult = await this.shipmentInstance.shipments.call(0);
+        const shipmentResult = await this.shipmentInstance.shipments.call(100);
 
         assert.equal(1, shipmentResult.price, "Mismatch of price");
         assert.equal(
@@ -120,15 +120,15 @@ contract("ShipmentContract", (accounts) => {
     });
 
     it("should proceed with payment", async () => {
-        const payment = await this.shipmentInstance.payShipment(0, {
+        const payment = await this.shipmentInstance.payShipment(100, {
             from: this.defaultUsers.buyer.address,
             value: 1,
         });
         expectEvent(payment.receipt, "ShipmentPaid", {
-            id: new BN(0),
+            id: new BN(100),
             price: new BN(1),
         });
-        const shipmentResult = await this.shipmentInstance.shipments.call(0);
+        const shipmentResult = await this.shipmentInstance.shipments.call(100);
 
         assert.equal(1, shipmentResult.price, "Mismatch of price");
         assert.equal(
@@ -144,14 +144,14 @@ contract("ShipmentContract", (accounts) => {
     });
 
     it("should approve custom's exit", async () => {
-        const shipment = await this.shipmentInstance.customExitApproval(0, {
+        const shipment = await this.shipmentInstance.customExitApproval(100, {
             from: this.defaultUsers.customs.address,
         });
         expectEvent(shipment.receipt, "CustomExitApproval", {
-            id: new BN(0),
+            id: new BN(100),
             customApproved: true,
         });
-        const shipmentResult = await this.shipmentInstance.shipments.call(0);
+        const shipmentResult = await this.shipmentInstance.shipments.call(100);
 
         assert.equal(1, shipmentResult.price, "Mismatch of price");
         assert.equal(
@@ -168,7 +168,7 @@ contract("ShipmentContract", (accounts) => {
 
     it("should transfer ownership", async () => {
         const shipment = await this.shipmentInstance.transferOwnership(
-            0,
+            100,
             this.defaultUsers.carrier.address,
             this.ownerEnums.CARRIER.val,
             {
@@ -176,13 +176,13 @@ contract("ShipmentContract", (accounts) => {
             }
         );
         expectEvent(shipment.receipt, "TransferOwnership", {
-            id: new BN(0),
+            id: new BN(100),
             price: new BN(1),
             seller: this.defaultUsers.seller.address,
             buyer: this.defaultUsers.buyer.address,
             ownerId: this.defaultUsers.carrier.address,
         });
-        const shipmentResult = await this.shipmentInstance.shipments.call(0);
+        const shipmentResult = await this.shipmentInstance.shipments.call(100);
 
         assert.equal(1, shipmentResult.price, "Mismatch of price");
         assert.equal(
@@ -207,15 +207,15 @@ contract("ShipmentContract", (accounts) => {
         );
     });
     it("should start shipping", async () => {
-        const shipment = await this.shipmentInstance.startShipping(0, {
+        const shipment = await this.shipmentInstance.startShipping(100, {
             from: this.defaultUsers.logistics.address,
         });
         expectEvent(shipment.receipt, "StartShipping", {
-            id: new BN(0),
+            id: new BN(100),
             ownerId: this.defaultUsers.carrier.address,
             status: new BN(this.statusEnums.SHIPPING.pos),
         });
-        const shipmentResult = await this.shipmentInstance.shipments.call(0);
+        const shipmentResult = await this.shipmentInstance.shipments.call(100);
 
         assert.equal(1, shipmentResult.price, "Mismatch of price");
         assert.equal(
@@ -226,11 +226,11 @@ contract("ShipmentContract", (accounts) => {
     });
 
     it("should get shipment status", async () => {
-        const shipment = await this.shipmentInstance.getShipmentStatus(0, {
+        const shipment = await this.shipmentInstance.getShipmentStatus(100, {
             from: this.defaultUsers.logistics.address,
         });
 
-        const shipmentResult = await this.shipmentInstance.shipments.call(0);
+        const shipmentResult = await this.shipmentInstance.shipments.call(100);
 
         assert.equal(1, shipmentResult.price, "Mismatch of price");
         assert.equal(
@@ -241,11 +241,11 @@ contract("ShipmentContract", (accounts) => {
     });
 
     it("should confirm shipment", async () => {
-        const shipment = await this.shipmentInstance.confirmShipment(0, {
+        const shipment = await this.shipmentInstance.confirmShipment(100, {
             from: this.defaultUsers.logistics.address,
         });
 
-        const shipmentResult = await this.shipmentInstance.shipments.call(0);
+        const shipmentResult = await this.shipmentInstance.shipments.call(100);
 
         assert.equal(1, shipmentResult.price, "Mismatch of price");
         assert.equal(
@@ -256,11 +256,11 @@ contract("ShipmentContract", (accounts) => {
     });
 
     it("should approve custom entry", async () => {
-        const shipment = await this.shipmentInstance.customEntryApproval(0, {
+        const shipment = await this.shipmentInstance.customEntryApproval(100, {
             from: this.defaultUsers.customs.address,
         });
 
-        const shipmentResult = await this.shipmentInstance.shipments.call(0);
+        const shipmentResult = await this.shipmentInstance.shipments.call(100);
 
         assert.equal(1, shipmentResult.price, "Mismatch of price");
         assert.equal(
@@ -272,11 +272,11 @@ contract("ShipmentContract", (accounts) => {
 
     it("should confirm delivery to buyer", async () => {
         const shipment =
-            await this.shipmentInstance.buyerConfirmationOfDelivery(0, {
+            await this.shipmentInstance.buyerConfirmationOfDelivery(100, {
                 from: this.defaultUsers.buyer.address,
             });
 
-        const shipmentResult = await this.shipmentInstance.shipments.call(0);
+        const shipmentResult = await this.shipmentInstance.shipments.call(100);
 
         assert.equal(1, shipmentResult.price, "Mismatch of price");
         assert.equal(

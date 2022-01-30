@@ -225,7 +225,8 @@
                 }
             ],
             "stateMutability": "view",
-            "type": "function"
+            "type": "function",
+            "constant": true
         },
         {
             "inputs": [
@@ -244,7 +245,8 @@
                 }
             ],
             "stateMutability": "view",
-            "type": "function"
+            "type": "function",
+            "constant": true
         },
         {
             "inputs": [
@@ -273,7 +275,8 @@
                 }
             ],
             "stateMutability": "view",
-            "type": "function"
+            "type": "function",
+            "constant": true
         },
         {
             "inputs": [
@@ -322,7 +325,8 @@
                 }
             ],
             "stateMutability": "view",
-            "type": "function"
+            "type": "function",
+            "constant": true
         },
         {
             "inputs": [
@@ -429,7 +433,8 @@
                 }
             ],
             "stateMutability": "view",
-            "type": "function"
+            "type": "function",
+            "constant": true
         },
         {
             "inputs": [
@@ -448,7 +453,8 @@
                 }
             ],
             "stateMutability": "view",
-            "type": "function"
+            "type": "function",
+            "constant": true
         },
         {
             "inputs": [
@@ -461,7 +467,8 @@
             "name": "payShipment",
             "outputs": [],
             "stateMutability": "payable",
-            "type": "function"
+            "type": "function",
+            "payable": true
         },
         {
             "inputs": [
@@ -542,7 +549,8 @@
                 }
             ],
             "stateMutability": "view",
-            "type": "function"
+            "type": "function",
+            "constant": true
         },
         {
             "inputs": [
@@ -44589,10 +44597,23 @@
             "links": {},
             "address": "0xe80f70fe74EAd29E0Cdc1DfAB4Ce143008ea0352",
             "transactionHash": "0xbc7383a5db926cce42ecbe6e8076e982e6db4f2c3600d088884ee8250a4cc554"
+        },
+        "1643329299335": {
+            "events": {},
+            "links": {},
+            "address": "0xe80f70fe74EAd29E0Cdc1DfAB4Ce143008ea0352",
+            "transactionHash": "0x5fd29c36093d190d3468ed89b51880be5f048ce73d213481a1f6188e24cd0c7b"
+        },
+        "1643331345428": {
+            "events": {},
+            "links": {},
+            "address": "0xe80f70fe74EAd29E0Cdc1DfAB4Ce143008ea0352",
+            "transactionHash": "0x5fd29c36093d190d3468ed89b51880be5f048ce73d213481a1f6188e24cd0c7b"
         }
     },
     "schemaVersion": "3.4.4",
-    "updatedAt": "2022-01-27T23:30:39.607Z",
+    "updatedAt": "2022-01-28T01:07:25.708Z",
+    "networkType": "ethereum",
     "devdoc": {
         "kind": "dev",
         "methods": {},

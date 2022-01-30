@@ -1,29 +1,19 @@
 import React, { useState } from "react";
 import { Row } from "react-bootstrap";
 import { Card } from "../Card";
-import { CreateShipment } from "./CreateShipment";
 import { ShowShipment } from "../ShowShipment";
-import { TransferOwnership } from "./TransferOwnership";
-import { StartShipment } from "./StartShipment";
-import { ConfirmShipment } from "./ConfirmShipment";
+import { PayShipment } from "./PayShipment";
+import { ConfirmDelivery } from "./ConfirmDelivery";
 
-export const Logistics = ({ contract }) => {
+export const Buyer = () => {
     const funcs = {
-        createShipment: {
-            title: "Create Shipment",
-            comp: <CreateShipment />,
+        pay: {
+            title: "Pay Shipment",
+            comp: <PayShipment />,
         },
-        transferOwner: {
-            title: "Transfer Ownership",
-            comp: <TransferOwnership />,
-        },
-        startShipment: {
-            title: "Start Shipment",
-            comp: <StartShipment />,
-        },
-        confirmShipment: {
-            title: "Confirm Shipment",
-            comp: <ConfirmShipment />,
+        confirm: {
+            title: "Confirm Delivery",
+            comp: <ConfirmDelivery />,
         },
         showShipment: {
             title: "Show Shipment",

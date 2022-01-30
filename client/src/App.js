@@ -25,6 +25,10 @@ const App = () => {
             const acc = await web3.eth.getAccounts();
             setAccounts(acc);
             if (!localStorage.getItem("contractAddress")?.length) {
+                localStorage.setItem(
+                    "0x89c3fACC5AC5d2d2A6F946fa4bAe5c6D92Ee2909",
+                    "admin&ADMIN"
+                );
                 const inst = new web3.eth.Contract(ShipmentContract.abi);
                 const tx = inst.deploy({ data: ShipmentContract.bytecode });
                 console.log("inst --->", tx);

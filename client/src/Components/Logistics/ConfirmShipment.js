@@ -1,40 +1,39 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { getCookie, verifyUser } from "../../helpers";
+import { confirmShipment, getCookie } from "../../helpers";
 
-export const VerifyUser = () => {
-    const [verified, setVerified] = useState(false);
-
+export const ConfirmShipment = () => {
+    const [shipmentID, setShipmentID] = useState(null);
     const handleOnSubmit = async (e) => {
-        setVerified(false);
+        setShipmentID(null);
         e.preventDefault();
-        const res = await verifyUser(getCookie("username"), e.target[0].value);
+        const res = await confirmShipment(
+            getCookie("username"),
+            e.target[0].value
+        );
         if (res != false) {
-            setVerified(true);
-            setTimeout(() => {
-                setVerified(false);
-            }, 3000);
+            setShipmentID(true);
         }
-        console.log("res in admin ver user ---> ", res);
+        console.log("res in logi confirm shipment ---> ", res);
     };
 
     return (
         <div className="container">
-            {!verified ? (
+            {!shipmentID ? (
                 <Form onSubmit={handleOnSubmit}>
                     <Form.Group>
                         <Form.Label className="fw-bold ">
-                            User address
+                            Shipment Id
                         </Form.Label>
                         <Form.Control />
                     </Form.Group>
                     <Button type="submit" className="primary block w-100 my-4">
-                        Verify
+                        Confirm
                     </Button>
                 </Form>
             ) : (
                 <div>
-                    <h1>Verified!</h1>
+                    <h1>Confirmed!</h1>
                 </div>
             )}
         </div>

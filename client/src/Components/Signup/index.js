@@ -7,7 +7,7 @@ const SignupComponent = ({ accounts }) => {
     const navigate = useNavigate();
     const [invalid, setInvalid] = useState(false);
     const [invalidMessage, setInvalidMessage] = useState("Invalid Address");
-    const handleOnClick = (e) => {
+    const handleOnClick = async (e) => {
         e.preventDefault();
         const username = e.target[0].value;
         if (
@@ -15,12 +15,18 @@ const SignupComponent = ({ accounts }) => {
             !localStorage.getItem(username) &&
             e.target[1].value.length
         ) {
-            localStorage.setItem(
-                username,
-                e.target[1].value + "&" + e.target[2].value
-            );
-            setUser(username, e.target[2].value);
-            navigate("/login");
+            const user = await setUser(username, e.target[2].value);
+            console.log("user is ", user);
+            if (user == false) {
+                setInvalid(true);
+                setInvalidMessage("Address already exists");
+            } else {
+                localStorage.setItem(
+                    username,
+                    e.target[1].value + "&" + e.target[2].value
+                );
+                navigate("/login");
+            }
         } else if (localStorage.getItem(username)) {
             setInvalid(true);
             setInvalidMessage("Address already exists");

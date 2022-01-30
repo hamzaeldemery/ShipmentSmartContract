@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { createShipment, getCookie } from "../../helpers";
 
 export const CreateShipment = () => {
+    const [shipmentID, setShipmentID] = useState(null);
     const handleOnSubmit = async (e) => {
+        setShipmentID(null);
         e.preventDefault();
         const res = await createShipment(
             getCookie("username"),
@@ -11,6 +13,11 @@ export const CreateShipment = () => {
             e.target[1].value,
             e.target[2].value
         );
+        if (res != false) {
+            setShipmentID(
+                res?.events?.CreateShipment?.returnValues?.id ?? null
+            );
+        }
         console.log("res in logi create shipment ---> ", res);
     };
 
@@ -32,6 +39,14 @@ export const CreateShipment = () => {
                 <Button type="submit" className="primary block w-100 my-4">
                     Create
                 </Button>
+                {shipmentID && (
+                    <div>
+                        <h1>
+                            {"Shipment id: "}
+                            <b>{shipmentID}</b>
+                        </h1>
+                    </div>
+                )}
             </Form>
         </div>
     );

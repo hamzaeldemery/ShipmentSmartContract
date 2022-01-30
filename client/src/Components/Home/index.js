@@ -1,13 +1,18 @@
 import React from "react";
 import { Admin } from "../Admin";
+import { Customs } from "../Customs";
 import { Logistics } from "../Logistics";
+import { Buyer } from "../Buyer";
+import { Dashboard } from "../Dashboard";
 
 export const Home = () => {
     const getPage = () => {
         const role = localStorage.getItem("userRole");
-        if (role == "ADMIN") return <Admin />;
-        if (role == "LOGISTICS") return <Logistics />;
-        else return <div>Home</div>;
+        if (role === "ADMIN") return <Admin />;
+        if (role === "LOGISTICS") return <Logistics />;
+        if (role === "CUSTOM") return <Customs />;
+        if (role === "BUYER") return <Buyer />;
+        else return <Dashboard />;
     };
     return (
         <div>
