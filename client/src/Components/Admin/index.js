@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router";
 import { Row } from "react-bootstrap";
 import { Card } from "../Card";
 import { VerifyUser } from "./VerifyUser";
+import { ShowShipment } from "../ShowShipment";
 
 export const Admin = () => {
     const [comp, setComp] = useState(null);
@@ -18,6 +18,21 @@ export const Admin = () => {
                             if (clicked != "verifyUser") {
                                 setClicked("verifyUser");
                                 setComp(<VerifyUser />);
+                            } else {
+                                setClicked("");
+                                setComp(null);
+                            }
+                        }}
+                    />
+                    <Card
+                        title="Show shipment"
+                        color={
+                            clicked === "showShipment" ? "secondary" : "dark"
+                        }
+                        onClick={() => {
+                            if (clicked != "showShipment") {
+                                setClicked("showShipment");
+                                setComp(<ShowShipment />);
                             } else {
                                 setClicked("");
                                 setComp(null);
