@@ -3,6 +3,7 @@ import { Row } from "react-bootstrap";
 import { Card } from "../Card";
 import { CreateShipment } from "./CreateShipment";
 import { ShowShipment } from "./ShowShipment";
+import { TransferOwnership } from "./TransferOwnership";
 
 export const Logistics = ({ contract }) => {
     const funcs = {
@@ -12,7 +13,7 @@ export const Logistics = ({ contract }) => {
         },
         transferOwner: {
             title: "Transfer Ownership",
-            comp: null,
+            comp: <TransferOwnership />,
         },
         startShipment: {
             title: "Start Shipment",

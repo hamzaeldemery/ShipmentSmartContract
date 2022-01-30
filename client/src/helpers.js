@@ -111,6 +111,36 @@ export const createShipment = async (address, seller, buyer, price) => {
     }
 };
 
+export const transferOwnership = async (
+    address,
+    shipment_id,
+    new_owner,
+    ownerType
+) => {
+    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const web3 = new Web3(provider);
+
+    try {
+        const contract = new web3.eth.Contract(
+            ShipmentContract.abi,
+            localStorage.getItem("contractAddress"),
+            { from: address }
+        );
+        const shipment = await contract.methods
+            ?.transferOwnership(shipment_id, new_owner, ownerType)
+            // .estimateGas({ from: address })
+            .send({ from: address, gas: 60000, gasPrice: 20000000000 })
+            .then((receipt) => {
+                console.log("receipt in create shipment ----->", receipt);
+            });
+
+        console.log("shipment in create shipment ----->", shipment);
+        return shipment;
+    } catch (e) {
+        console.log("create shipment err -->", e);
+    }
+};
+
 export const getShipment = async (address, shipmentId) => {
     const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
     const web3 = new Web3(provider);
@@ -126,9 +156,11 @@ export const getShipment = async (address, shipmentId) => {
             ?.showShipment(shipmentId)
             // .estimateGas({ from: address })
             .call()
-            .then((receipt) => {
-                console.log("receipt in create shipment ----->", receipt);
-                return receipt;
+            .then((res) => {
+                return res;
+            })
+            .catch((err) => {
+                return false;
             });
 
         console.log("shipment in create shipment ----->", shipment);
