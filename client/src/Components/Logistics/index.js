@@ -4,6 +4,8 @@ import { Card } from "../Card";
 import { CreateShipment } from "./CreateShipment";
 import { ShowShipment } from "./ShowShipment";
 import { TransferOwnership } from "./TransferOwnership";
+import { StartShipment } from "./StartShipment";
+import { ConfirmShipment } from "./ConfirmShipment";
 
 export const Logistics = ({ contract }) => {
     const funcs = {
@@ -17,11 +19,11 @@ export const Logistics = ({ contract }) => {
         },
         startShipment: {
             title: "Start Shipment",
-            comp: null,
+            comp: <StartShipment />,
         },
         confirmShipment: {
             title: "Confirm Shipment",
-            comp: null,
+            comp: <ConfirmShipment />,
         },
         showShipment: {
             title: "Show Shipment",

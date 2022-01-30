@@ -169,5 +169,67 @@ export const getShipment = async (address, shipmentId) => {
         console.log("create shipment err -->", e);
     }
 };
+//todo
+export const confirmShipment = async (address, shipmentId) => {
+    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const web3 = new Web3(provider);
+
+    try {
+        const contract = new web3.eth.Contract(
+            ShipmentContract.abi,
+            localStorage.getItem("contractAddress"),
+            { from: address }
+        );
+        console.log(contract);
+        const shipment = await contract.methods
+            ?.confirmShipment(shipmentId)
+            .estimateGas({ from: address })
+            // .send({from: address})
+            .then((res) => {
+                console.log(res);
+                return res;
+            })
+            .catch((err) => {
+                console.log(err);
+                return false;
+            });
+
+        console.log("shipment in create shipment ----->", shipment);
+        return shipment;
+    } catch (e) {
+        console.log("create shipment err -->", e);
+    }
+};
+//todo
+export const startShipment = async (address, shipmentId) => {
+    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const web3 = new Web3(provider);
+
+    try {
+        const contract = new web3.eth.Contract(
+            ShipmentContract.abi,
+            localStorage.getItem("contractAddress"),
+            { from: address }
+        );
+        console.log(contract);
+        const shipment = await contract.methods
+            ?.startShipping(shipmentId)
+            .estimateGas({ from: address })
+            // .send({ from: address })
+            .then((res) => {
+                console.log(res);
+                return res;
+            })
+            .catch((err) => {
+                console.log(err);
+                return false;
+            });
+
+        console.log("shipment in create shipment ----->", shipment);
+        return shipment;
+    } catch (e) {
+        console.log("create shipment err -->", e);
+    }
+};
 
 export default getWeb3;
