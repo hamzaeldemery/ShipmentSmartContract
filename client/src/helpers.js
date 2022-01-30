@@ -105,6 +105,9 @@ export const createShipment = async (address, seller, buyer, price) => {
             .send({ from: address, gas: 200000, gasPrice: 20000000000 })
             .then((receipt) => {
                 return receipt;
+            })
+            .catch(() => {
+                return false;
             });
 
         console.log("shipment in create shipment ----->", shipment);
@@ -135,6 +138,10 @@ export const transferOwnership = async (
             .send({ from: address, gas: 100000, gasPrice: 20000000000 })
             .then((receipt) => {
                 console.log("receipt in create shipment ----->", receipt);
+                return receipt;
+            })
+            .catch(() => {
+                return false;
             });
 
         console.log("shipment in create shipment ----->", shipment);
