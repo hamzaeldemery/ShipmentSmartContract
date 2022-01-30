@@ -3,6 +3,7 @@ import { Admin } from "../Admin";
 import { Customs } from "../Customs";
 import { Logistics } from "../Logistics";
 import { Buyer } from "../Buyer";
+import { Dashboard } from "../Dashboard";
 
 export const Home = () => {
     const getPage = () => {
@@ -11,7 +12,7 @@ export const Home = () => {
         if (role === "LOGISTICS") return <Logistics />;
         if (role === "CUSTOM") return <Customs />;
         if (role === "BUYER") return <Buyer />;
-        else return <div>Home</div>;
+        else return <Dashboard />;
     };
     return (
         <div>
