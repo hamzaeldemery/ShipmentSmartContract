@@ -7,10 +7,10 @@ import { Buyer } from "../Buyer";
 export const Home = () => {
     const getPage = () => {
         const role = localStorage.getItem("userRole");
-        if (role == "ADMIN") return <Admin />;
-        if (role == "LOGISTICS") return <Logistics />;
-        if (role == "CUSTOM") return <Customs />;
-        if (role == "BUYER") return <Buyer />;
+        if (role === "ADMIN") return <Admin />;
+        if (role === "LOGISTICS") return <Logistics />;
+        if (role === "CUSTOM") return <Customs />;
+        if (role === "BUYER") return <Buyer />;
         else return <div>Home</div>;
     };
     return (

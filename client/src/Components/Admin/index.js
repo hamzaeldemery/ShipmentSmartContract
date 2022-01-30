@@ -13,7 +13,7 @@ export const Admin = () => {
                 <Row xs={2} md={4} className="g-4">
                     <Card
                         title="Verify user"
-                        color={clicked == "verifyUser" ? "secondary" : "dark"}
+                        color={clicked === "verifyUser" ? "secondary" : "dark"}
                         onClick={() => {
                             if (clicked != "verifyUser") {
                                 setClicked("verifyUser");

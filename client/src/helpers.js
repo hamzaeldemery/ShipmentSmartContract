@@ -1,4 +1,3 @@
-import { BN, expectEvent } from "@openzeppelin/test-helpers";
 import Web3 from "web3";
 import ShipmentContract from "./Contracts/Shipment.json";
 
@@ -26,7 +25,7 @@ export const getCookie = (name) => {
         var cookiePair = cookieArr[i].split("=");
         /* Removing whitespace at the beginning of the cookie name
             and compare it with the given string */
-        if (name == cookiePair[0].trim()) {
+        if (name === cookiePair[0].trim()) {
             // Decode the cookie value and return
             return decodeURIComponent(cookiePair[1]);
         }
@@ -46,7 +45,7 @@ export const setUser = async (address, role) => {
             localStorage.getItem("contractAddress")
         );
         console.log(contract.options);
-        let data = contract.methods
+        let data = await contract.methods
             ?.setUser(role)
             .send({ from: address, gas: 140000, gasPrice: 20000000000 })
             .then((res) => {
@@ -78,6 +77,10 @@ export const verifyUser = async (address, userAddress) => {
             .send({ from: address, gas: 140000, gasPrice: 20000000000 })
             .then((receipt) => {
                 console.log("receipt in verify user ----->", receipt);
+                return receipt;
+            })
+            .catch((err) => {
+                return false;
             });
 
         console.log("user in verify user ----->", user);

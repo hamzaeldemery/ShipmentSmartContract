@@ -33,7 +33,7 @@ export const Customs = () => {
                                 key={funcs[key].title}
                                 title={funcs[key].title}
                                 color={
-                                    clicked == funcs[key].title
+                                    clicked === funcs[key].title
                                         ? "secondary"
                                         : "dark"
                                 }
