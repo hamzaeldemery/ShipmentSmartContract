@@ -13,6 +13,9 @@ export const EntryApproval = () => {
         );
         if (res != false) {
             setShipmentID(true);
+            setTimeout(() => {
+                setShipmentID(false);
+            }, 3000);
         }
         console.log("res in customEntryApproval ---> ", res);
     };
@@ -33,7 +36,7 @@ export const EntryApproval = () => {
                 </Form>
             ) : (
                 <div>
-                    <h1>Confirmed!</h1>
+                    <h1>Approved!</h1>
                 </div>
             )}
         </div>
