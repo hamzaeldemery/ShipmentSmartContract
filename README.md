@@ -9,7 +9,15 @@
       Ganache/Ganache-cli
       
 ## Comands to run to from directory:
-  
+
+  * <b>Install dependencies</b>: 
+  ```sh
+  yarn
+  ```
+  OR
+  ```sh
+  npm install
+  ```
   * <b>Compile</b>: 
   ```sh
   yarn compile
