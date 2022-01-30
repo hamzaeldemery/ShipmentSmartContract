@@ -31,7 +31,7 @@ export const ConfirmDelivery = () => {
                         <Form.Control />
                     </Form.Group>
                     <Button type="submit" className="primary block w-100 my-4">
-                        Confirmed!
+                        Confirm
                     </Button>
                 </Form>
             ) : (
