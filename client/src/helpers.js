@@ -183,8 +183,8 @@ export const confirmShipment = async (address, shipmentId) => {
         console.log(contract);
         const shipment = await contract.methods
             ?.confirmShipment(shipmentId)
-            .estimateGas({ from: address })
-            // .send({from: address})
+            // .estimateGas({ from: address })
+            .send({ from: address, gas: 60000, gasPrice: 20000000000 })
             .then((res) => {
                 console.log(res);
                 return res;
@@ -214,8 +214,8 @@ export const startShipment = async (address, shipmentId) => {
         console.log(contract);
         const shipment = await contract.methods
             ?.startShipping(shipmentId)
-            .estimateGas({ from: address })
-            // .send({ from: address })
+            // .estimateGas({ from: address })
+            .send({ from: address, gas: 60000, gasPrice: 20000000000 })
             .then((res) => {
                 console.log(res);
                 return res;
@@ -232,4 +232,139 @@ export const startShipment = async (address, shipmentId) => {
     }
 };
 
+export const exitApproval = async (address, shipmentId) => {
+    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const web3 = new Web3(provider);
+
+    try {
+        const contract = new web3.eth.Contract(
+            ShipmentContract.abi,
+            localStorage.getItem("contractAddress"),
+            { from: address }
+        );
+        console.log(contract);
+        const shipment = await contract.methods
+            ?.customExitApproval(shipmentId)
+            // .estimateGas({ from: address })
+            .send({ from: address, gas: 60000, gasPrice: 20000000000 })
+            .then((res) => {
+                console.log(res);
+                return res;
+            })
+            .catch((err) => {
+                console.log(err);
+                return false;
+            });
+
+        console.log("shipment in customExitApproval ----->", shipment);
+        return shipment;
+    } catch (e) {
+        console.log("customExitApproval err -->", e);
+    }
+};
+
+export const entryApproval = async (address, shipmentId) => {
+    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const web3 = new Web3(provider);
+
+    try {
+        const contract = new web3.eth.Contract(
+            ShipmentContract.abi,
+            localStorage.getItem("contractAddress"),
+            { from: address }
+        );
+        console.log(contract);
+        const shipment = await contract.methods
+            ?.customEntryApproval(shipmentId)
+            // .estimateGas({ from: address })
+            .send({ from: address, gas: 60000, gasPrice: 20000000000 })
+            .then((res) => {
+                console.log("ressed?: ", res);
+                return res;
+            })
+            .catch((err) => {
+                console.log(err);
+                return false;
+            });
+
+        console.log("shipment in customEntryApproval ----->", shipment);
+        return shipment;
+    } catch (e) {
+        console.log("customEntryApproval err -->", e);
+    }
+};
+
+export const payShipment = async (address, shipmentId) => {
+    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const web3 = new Web3(provider);
+
+    try {
+        const contract = new web3.eth.Contract(
+            ShipmentContract.abi,
+            localStorage.getItem("contractAddress"),
+            { from: address }
+        );
+        console.log(contract);
+        const shipment = await contract.methods
+            ?.showShipment(shipmentId)
+            .call();
+        const payment = await contract.methods
+            ?.payShipment(shipmentId)
+            // .estimateGas({ from: address })
+            .send({
+                from: address,
+                value: shipment?.price,
+                gas: 60000,
+                gasPrice: 20000000000,
+            })
+            .then((res) => {
+                console.log(res);
+                return res;
+            })
+            .catch((err) => {
+                console.log(err);
+                return false;
+            });
+
+        console.log("shipment in customEntryApproval ----->", payment);
+        return payment;
+    } catch (e) {
+        console.log("customEntryApproval err -->", e);
+    }
+};
+
+export const confirmDelivery = async (address, shipmentId) => {
+    const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+    const web3 = new Web3(provider);
+
+    try {
+        const contract = new web3.eth.Contract(
+            ShipmentContract.abi,
+            localStorage.getItem("contractAddress"),
+            { from: address }
+        );
+        console.log(contract);
+        const payment = await contract.methods
+            ?.buyerConfirmationOfDelivery(shipmentId)
+            // .estimateGas({ from: address })
+            .send({
+                from: address,
+                gas: 60000,
+                gasPrice: 20000000000,
+            })
+            .then((res) => {
+                console.log(res);
+                return res;
+            })
+            .catch((err) => {
+                console.log(err);
+                return false;
+            });
+
+        console.log("shipment in buyer delivery ----->", payment);
+        return payment;
+    } catch (e) {
+        console.log("buyer delivery err -->", e);
+    }
+};
 export default getWeb3;
