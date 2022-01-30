@@ -48,7 +48,7 @@ export const setUser = async (address, role) => {
         console.log(contract.options);
         let data = contract.methods
             ?.setUser(role)
-            .send({ from: address, gas: 96000, gasPrice: 20000000000 })
+            .send({ from: address, gas: 140000, gasPrice: 20000000000 })
             .then((res) => {
                 return true;
             })
@@ -75,7 +75,7 @@ export const verifyUser = async (address, userAddress) => {
         );
         const user = await contract.methods
             ?.verifyUser(userAddress)
-            .send({ from: address, gas: 96000, gasPrice: 20000000000 })
+            .send({ from: address, gas: 140000, gasPrice: 20000000000 })
             .then((receipt) => {
                 console.log("receipt in verify user ----->", receipt);
             });
@@ -99,9 +99,9 @@ export const createShipment = async (address, seller, buyer, price) => {
         const shipment = await contract.methods
             ?.createShipment(price, seller, buyer)
             // .estimateGas({ from: address })
-            .send({ from: address, gas: 144000, gasPrice: 20000000000 })
+            .send({ from: address, gas: 200000, gasPrice: 20000000000 })
             .then((receipt) => {
-                console.log("receipt in create shipment ----->", receipt);
+                return receipt;
             });
 
         console.log("shipment in create shipment ----->", shipment);
@@ -129,7 +129,7 @@ export const transferOwnership = async (
         const shipment = await contract.methods
             ?.transferOwnership(shipment_id, new_owner, ownerType)
             // .estimateGas({ from: address })
-            .send({ from: address, gas: 60000, gasPrice: 20000000000 })
+            .send({ from: address, gas: 100000, gasPrice: 20000000000 })
             .then((receipt) => {
                 console.log("receipt in create shipment ----->", receipt);
             });
